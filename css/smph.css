@@ -1,0 +1,380 @@
+@charset "utf-8";
+/*乃木坂46 公式サイト*/
+
+/**/
+*{margin:0;padding:0;-webkit-text-size-adjust:none;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+body,table,form{font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif;line-height:1.5;}
+li{list-style:none;}
+th,td{text-align:left;vertical-align:top;}
+embed,object{outline:none;}
+.clearfix:after{
+    content:".";
+    display:block;height:0;clear:both;visibility:hidden;
+}
+.clearfix{display:inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix{height:1%;}
+.clearfix{display:block;}
+/* End hide from IE-mac */
+
+.alt,hr,#copyright{
+    visibility:hidden;position:absolute;top:-5000px;left:-5000px;width:1px;display:none;
+    /*\*/
+    display:block;
+    /**/
+}
+
+/*base*/
+body{background:#fff;color:#333;}
+a{text-decoration:underline;outline:none;color:#7e1083;word-break: break-word;}
+
+#logo{width:160px;height:42px;float:left;}
+#dispmenu{float:right;width:75px;margin-right:10px;padding-top:8px;}
+#dispmenu a{
+    display:block;white-space:nowrap;
+    overflow:hidden;font-family:futura,arial;
+    text-align:center;text-decoration:none;
+    color:#fff;
+    padding:4px 0;font-size:70%;
+    font-weight:bold;
+    background:#7f1083;
+    -moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#c77cd4),
+    color-stop(0.48, #a849ab),
+    color-stop(0.52, #99299d),
+    to(#7f1083)
+    );
+    box-shadow: 0 1px 2px #bbb;
+    -moz-box-shadow: 0 1px 2px #bbb;
+    -webkit-box-shadow: 0 1px 2px #bbb;
+    border:solid 1.5px #ebddee;
+}
+#dispmenu a span{font-size:80%;color:#fde;}
+#menu{background:#7e1083;display:none;padding:6px 0 2px 2px;}
+#menu a{
+    font-size:60%;color:#7e1083;
+    display:block;width:31%;float:left;
+    margin:0 0 5px 2%;font-weight:bold;
+    text-decoration:none;padding:6px 0;
+    line-height:1;letter-spacing:-0.05em;
+    text-align:center;
+    background:#fff;
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#fff),
+    color-stop(0.48, #eee),
+    color-stop(0.52, #ddd),
+    to(#ccc)
+    );
+    -moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+    box-shadow: 0 1px 2px #666;
+    -moz-box-shadow: 0 1px 2px #666;
+    -webkit-box-shadow: 0 1px 2px #666;
+}
+#menu select{
+    float:left;width:31%;margin:0 0 5px 2%;
+    background:#fff;color:#7e1083;
+    font-weight:bold;height:2em;
+    text-align:center;font-size:10px;
+}
+#fukidash{position:relative;}
+#fukidash img{
+    text-indent:-5000px;
+    display:block;position:absolute;
+    right:32px;top:-10px;
+    width:15px;height:5px;
+}
+#snsbtns{text-align:center;padding:6px 0;border-top:dashed 1px #bf87c1;}
+#snsbtns table{margin:0 auto;}
+#snsbtns td{text-align:center;overflow:hidden;padding:0 2px;}
+#container{
+    border-top:solid 1px #c8a3c9;
+}
+#officialSNS{
+    background:#6a1478;padding:7px 0 8px;
+    position:relative;overflow:hidden;
+}
+#officialSNS .inner{
+    position:relative;left:50%;float:left;
+}
+#officialSNS a{
+    display:block;float:left;position:relative;left:-50%;
+}
+#officialSNS a img{
+    display:block;margin:0 2px;
+    -moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+}
+#footer{background:#a258ae;text-align:center;color:#fff;font-size:70%;}
+h1{min-height:30px;}
+
+/*共通設定
+////////////////////////////////////////*/
+.noborder{border-width:0 !important;}
+.pic { text-align:center; margin-bottom:20px;}
+.notes { font-size:12px;}
+.cPin { color:#e2437a;}
+.cPur { color:#7e1083;}
+.ptop { text-align:right; font-size:12px; font-family:Arial; padding:0 2.5% 5px;}
+
+.main { width:100%; margin:0 auto;}
+.main h2 {
+    background:#7e1083;
+    color:#fff;
+    line-height:1;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    padding:10px;
+    box-shadow: 0 2px 3px #ccc;
+    -moz-box-shadow: 0 2px 3px #ccc;
+    -webkit-box-shadow: 0 2px 3px #ccc;
+}
+.main h2 .en {
+    font-size:65%; color:#fff; filter:alpha(opacity=70); -moz-opacity:0.7; opacity:0.7;
+    font-family:futura,arial;font-weight:normal;
+}
+.main h2.c01 { background:#e2437a;}
+.main h2.c02 { background:#2d91bd;}
+.main h2.c03 { background:#46b961;}
+.main h2.c04 { background:#ffb427;}
+
+.main h2.line {
+    background:#fff;
+    color:#7e1083;
+    -moz-border-radius:0;
+    -webkit-border-radius:0;
+    border-radius:0;
+    box-shadow:none;
+    padding:10px;
+    margin-bottom:10px;
+    border-top:1px solid #7e1083;
+    border-bottom:1px solid #7e1083;
+    border-right:none;
+}
+.main h2.line .sub { display:block; font-size:75%; color:#333; padding-top:5px;}
+
+.main p.txt { font-size:90%; line-height:1.5; padding:0 10px 20px;}
+
+/*roundBox*/
+.roundBox {
+    letter-spacing:0.05em;
+    background:#fff;
+    border:2px solid #ead7ed;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    padding:0;
+    margin:0 0 10px;
+    font-size:85%;
+    line-height:1.35;
+}
+.roundBox .inner { padding:15px 15px 10px;}
+
+/*btn*/
+.btn {
+    display:block;
+    width:30%;
+    font-size:16px;
+    font-weight:bold;
+    text-align:center;
+    text-decoration:none;
+    color:#fff;
+    letter-spacing:0.1em;
+    border-bottom:2px solid #ccc;
+    border-right:1px solid #ccc;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    background: -moz-linear-gradient(center top, #a849ab 50%, #99299d 50%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #a849ab),color-stop(0.5, #99299d));
+    padding:3px 0 3px 10px;
+    margin:0 auto 10px;
+}
+.ar1 { display:block; background:url(http://img.nogizaka46.com/blog/smph/img/arrow1.png) no-repeat left center;}
+.ar2 { display:block; background:url(http://img.nogizaka46.com/blog/smph/img/arrow2.png) no-repeat left center;}
+
+
+#menu2{background:#7e1083;padding:6px 0 2px 2px;border-bottom:solid 1px #4d0b58;}
+#menu2 a{
+    font-size:60%;color:#7e1083;
+    display:block;width:31%;float:left;
+    margin:0 0 5px 2%;font-weight:bold;
+    text-decoration:none;padding:6px 0;
+    line-height:1;letter-spacing:-0.05em;
+    text-align:center;
+    background:#fff;
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#fff),
+    color-stop(0.48, #eee),
+    color-stop(0.52, #ddd),
+    to(#ccc)
+    );
+    -moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+    box-shadow: 0 1px 2px #666;
+    -moz-box-shadow: 0 1px 2px #666;
+    -webkit-box-shadow: 0 1px 2px #666;
+}
+#menu2 select{
+    float:left;width:31%;margin:0 0 5px 2%;
+    background:#fff;color:#7e1083;
+    font-weight:bold;height:2em;
+    text-align:center;
+}
+
+.errormessage{padding:0 15px 0;color:red;font-size:90%;}
+.bnr{padding:0 0 10px;}
+
+.pcbtn{
+    background:#333;padding:10px;text-align:center;
+    box-shadow: inset 0 0 5px 0px #222;
+}
+.pcbtn a{
+    background:#000;
+    border-radius: 6px;
+    box-shadow: inset 1px 1px 2px 0px #000;
+    box-shadow: 0px 1px 0px 0px #4a484a;
+    color: #FFFFFF;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 3px 6px;
+    text-align: center;
+    text-decoration: none;
+    width: 15em;
+    font-size:70%;
+    line-height:1.3;
+    font-family:futura;
+}
+
+/*ブログ*/
+#blogstyle0 #blogmaintitle{
+    background:url(http://img.nogizaka46.com/blog/smph/img/h1top.gif) 0 0 repeat-x;
+    background-size:auto 100%;
+}
+#blogstyle1 #blogmaintitle{
+    background:url(http://img.nogizaka46.com/blog/smph/img/h1member.gif) 0 0 repeat-x;
+    background-size:auto 100%;
+}
+#blogstyle2 #blogmaintitle{
+    background:url(http://img.nogizaka46.com/blog/smph/img/h1staff.gif) 0 0 repeat-x;
+    background-size:auto 100%;
+}
+#blogmaintitle{height:61px;color:#fff;line-height:1;padding-left:8px;}
+#blogmaintitle div{font-size:27px;font-family:futura,arial;padding-top:15px;}
+#blogmaintitle div span{font-size:18px;}
+#blogmaintitle a{color:#fff;}
+#blogmaintitle a:hover{color:#f5d2de;}
+#staffblog #blogmaintitle a:hover{color:#d4e9f7;}
+
+.relnavi{text-align:center;padding:3px 0 10px;font-family:futura,arial;}
+.paginate{text-align:center;padding:3px 0 10px;font-family:futura,arial;color:#e2437a;font-size:90%;}
+
+#sheet{
+    padding:0 10px;
+}
+#sheet .HH{
+    border:solid 2px #7e1083;
+    /*background:url(../img/datebg.gif) 0 0 repeat-y;*/
+    -moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;
+    margin:0;padding:0;
+    width:100%;
+}
+#sheet .HH .date{
+    background:#7e1083;
+    color:#fff;text-align:center;
+    padding:10px 0;font-family:futura,arial;
+    font-weight:normal;line-height:1;overflow:hidden;
+    vertical-align:middle;
+}
+#sheet .HH .yearmonth{text-align:left;padding:0 10px;}
+#sheet .HH .yearmonth,
+#sheet .HH .daydate{display:block;font-size:12px;}
+#sheet .HH .dd1{font-size:30px;}
+#sheet .HH .heading{
+    color:#7e1083;
+    vertical-align:middle;
+}
+#sheet .HH .author{display:block;border-bottom:dashed 1px #7e1083;padding:5px 0 4px;margin:0 8px;font-weight:normal;line-height:1;font-size:75%;}
+#sheet .HH .entrytitle,#sheet .HH .entryttl{display:block;padding:6px 0;margin:0 5px;font-size:100%;line-height:1.2;font-weight:bold;}
+#sheet .fkd{
+    width:12px;height:15px;margin-left:45px;
+}
+.entrybody{
+    line-height:1.8;
+    background:#fff;
+     margin-bottom:1em;
+    -moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;
+}
+.entrybody.nopad{padding:0 10px !important;}
+.assetmorelink{
+    border-top:dashed 1px #7e1083;
+    text-align:center;
+}
+.assetmorelink a{background:#f4e9f6;display:block;padding:0.5em 0;}
+.assetmorelink a:hover{background:#f7eef8;}
+.entrybottom{
+    padding:0.5em 0 0;
+    font-size:75%;text-align:center;
+}
+.kijibtn{
+    display:block;
+    border:solid 1px #ddd;
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#fff),
+    color-stop(0.48, #f3f3f3),
+    color-stop(0.52, #efefef),
+    to(#e6e6e6)
+    );
+    -moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+    text-decoration:none;
+    padding:3px 10px;
+    margin:5px 0;
+}
+#morelinks{
+    -moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px;
+    background:#fdb1cb;
+    padding:6px 10px;
+    margin:12px;
+    border:solid 3px #ffd7e5;
+}
+#morelinks.staff{
+    background:#95caec;
+    border:solid 3px #cae8fb;
+}
+#morelinks h3{
+    color:#fff;font-size:80%;font-family:futura;font-weight:normal;
+}
+#morelinks select{
+    display:block;width:49%;float:left;
+}
+#morelinks select.pd2{float:right;}
+.h3g{
+    font-family:futura;
+    color:#fdb1cb;
+    font-weight:normal;
+}
+
+.archive-title, #comments h3 {
+    border-bottom: 4px solid #bf87c1;
+    color: #7e1083;
+    font-family: futura,arial;
+    font-size: 110%;
+    font-weight: normal;
+    margin:0 10px 20px;
+    padding-top: 10px;
+}
+#comments h3{margin:0 0 20px;}
+.comments-content{
+    padding:0 10px 10px;margin-bottom:15px;
+    border-bottom:dashed 2px #bf87c1;
+    color:#4b4f9b;
+}
+.comment-header{color:#333;line-height:1.2;}
+.comment-header .author{font-size:120%;font-weight:bold;}
+.comment-header .published{display:block;color:#888;font-size:80%;}
+
+#comments-open-text img{margin:3px;}
+#comments-open-text textarea{width:90%;}
+
+#comprepad{padding:15px 150px;}
+.entrybody img{max-width:100%;}
+
+:not(:lang(ja)) #comments-open {display: none;}

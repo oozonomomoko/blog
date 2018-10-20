@@ -1,0 +1,22 @@
+<svg width="62" height="100" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#b264a2" stroke="white" stroke-width="2" d="M0 50 L50 50 L50 0 Z">
+        <animateMotion from="0,0" to="4,4" begin="1s" dur="1s" fill="freeze"/>
+        <animateMotion from="4,4" to="8,8" begin="3s" dur="1s" fill="freeze"/>
+        <animateMotion from="8,8" to="12,12" begin="5s" dur="1s" fill="freeze"/>
+    </path>
+    <path fill="#5eb954" stroke="white" stroke-width="2" style="opacity:0;" d="M0 50 L50 50 L50 0 Z">
+        <animate attributeName="opacity" from="0" to="1" begin="2s" dur="1s" fill="freeze"/>
+        <animateMotion from="0,0" to="4,4" begin="3s" dur="1s" fill="freeze"/>
+        <animateMotion from="4,4" to="8,8" begin="5s" dur="1s" fill="freeze"/>
+    </path>
+    <path fill="#fd830c" stroke="white" stroke-width="2" style="opacity:0;" d="M0 50 L50 50 L50 0 Z">
+        <animate attributeName="opacity" from="0" to="1" begin="4s" dur="1s" fill="freeze"/>
+        <animateMotion from="0,0" to="4,4" begin="5s" dur="1s" fill="freeze"/>
+    </path>
+    <path fill="#feeb15" stroke="white" stroke-width="2" style="opacity:0;" d="M0 50 L50 50 L50 0 Z">
+        <animate attributeName="opacity" from="0" to="1" begin="6s" dur="1s" fill="freeze"/>
+    </path>
+    <text x="36" y="47" font-size="12px" fill="white" style="text-shadow:0 0 1px gray;font-family: cursive;" >46</text>
+    <text x="10" y="73" font-size="12px" fill="#feeb15" style="text-shadow:0 0 1px gray;font-family: cursive;opacity:0;" >オタク坂
+    <animate attributeName="opacity" from="0" to="1" begin="6s" dur="1s" fill="freeze"/></text>
+</svg>
