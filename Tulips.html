@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <script type="text/javascript" src="js/Tulips.js"></script>
+    <style type="text/css">
+        #img {
+            width: 100%;
+            transition: width 2s;
+            -moz-transition: width 2s;	/* Firefox 4 */
+            -webkit-transition: width 2s;	/* Safari 和 Chrome */
+            -o-transition: width 2s;	/* Opera */
+        }
+        #main {
+            position: absolute;
+            top: 7px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var imgEles = document.getElementsByTagName('img');
+            for(var i=0; i < imgEles.length;i++) {
+                var img = imgEles[i];
+                new Tulips().init({
+                    imgElement:imgEles[i],
+                    row:3,
+                    column:3,
+                    sucRemove: true,
+                    success:function(imgElement){
+                        document.body.style['background-image'] = 'url(' + imgElement.src + ')';
+                        document.body.style['background-size'] = 'cover';
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="haha.html"><img id="img" src="image/asuka.jpeg"/></a>
+</body>
+</html>

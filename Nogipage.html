@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <script type="text/javascript" src="js/Nogipage.js"></script>
+    <style type="text/css">
+        #Nogipage {
+            top: 10%;
+            bottom: 10%;
+            width: 14%;
+            position: fixed;
+            right: 0;
+            height: 80%;
+        }
+        #Nogipage .nogiPre {
+            height: 10%;
+            width: 100%;
+            position: absolute;
+            right: 0;
+            color: #bb5dbd;
+            border-radius: 100% 0 0 0;
+            border: 2px solid;
+        }
+        #Nogipage .nogiNxt {
+            height: 10%;
+            width: 100%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #bb5dbd;
+            border-radius: 0 0 0 100%;
+            border: 2px solid;
+        }
+        #Nogipage .nogiNum {
+            height: 80%;
+            width: 100%;
+            position: absolute;
+            top: 10%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            font-size: 1em;
+        }
+        #Nogipage .nogiNum span {
+            color: #bb5dbd;
+            float: left;
+            text-align: center;
+            border-radius: 2em 1em 1em 2em;
+            font-size: 1.5em;
+            width: 100%;
+            margin-bottom: 0.3em;
+            border: 2px solid;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            new Nogipage().init({
+                totalPage:1000, //总页数
+                pageNum:1,//当前页
+                click:function(pageNum){
+                    console.log(pageNum);
+                }//点击某页的回调
+            });
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

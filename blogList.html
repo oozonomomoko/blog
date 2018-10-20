@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/LCalendar.css?v=20180808" type="text/css">
+    <style type="text/css">
+        #icon {
+            border-top: 3.6em solid white;
+            border-right: 3.44em solid #89007F;
+            box-shadow: 0 0 16px #a18ada;
+            animation: head 2s ease;
+            float: left;
+            left: 5pt;
+            position: absolute;
+        }
+        @keyframes head {
+            0% {border-right-color:#FFFFFF}
+            100% {border-right-color:#89007F}
+        }
+        #fortysix {
+            position: absolute;
+            top: -38px;
+            left: 34px;
+            font-size: 1em;
+            color: white;
+            font-weight: 500;
+        }
+        #nogi {
+            font-weight: bolder;
+            color: RGB(137,0,127);
+            font-size: 1em;
+            width: 100%;
+            line-height: 3.6em;
+            position: absolute;
+            text-align: center;
+            left: 0;
+            border-bottom: 1px;
+            border-bottom-style: dashed;
+            padding-bottom: 7px;
+        }
+        .nogizaka {
+            float: left;
+            width: 100%;
+        }
+        #nogi a {
+            font-size: 11pt;
+            color: white;
+            background-color: #89007F;
+            line-height: 1.8em;
+            text-decoration: none;
+            padding: 2pt 4pt;
+            position: absolute;
+            right: 5pt;
+        }
+#showpic {
+    bottom: 1px;
+}
+        .datepicker {
+            z-index: 10;
+            font-weight: bold;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            line-height: 46px;
+            height: 46px;
+            opacity: 0.7;
+            box-shadow: 0 0 16px #89007F;
+            color: #89007F;
+            background-color: #f8f8fa;
+        }
+        .day {
+            float: left;
+            width: 25%;
+            background-color: #89007F;
+            color: white;
+        }
+        #butt {
+            float: left;
+            width: 50%;
+        }
+
+        /**列表样式*/
+        .blogList {
+            padding-top:50pt;
+            padding-bottom: 46pt;
+            font-size: 10pt;
+        }
+        .detail {
+            float: right;
+            position: fixed;
+            right: 0;
+            top:0;
+            width: 0;
+            font-size: 10pt;
+            height:100%;
+        }
+
+       .authorName {
+            font-size: 13pt;
+            font-weight: bolder;
+            margin: 0 5pt;
+            line-height: 30pt;
+            float: left;
+            position: absolute;
+        }
+        .date {
+            font-size: 10pt;
+            font-weight: bold;
+            line-height: 32pt;
+            float: right;
+        }
+        .itemHead {
+            height: 32pt;
+            color: #8930ad;
+        }
+        .itemPic {
+            position: relative;
+        }
+        .headImg {
+            height: 30pt;
+            margin: 0 auto;
+            float: left;
+        }
+        .item {
+            margin: 0pt 6pt 6pt 6pt;
+            padding: 3pt 5pt;
+            background-color: white;
+            border-radius: 4pt;
+            box-shadow: 0 0 10pt #a18ada;
+            animation: showList .8s ease;
+        }
+        @keyframes showList {
+           0% { transform: scale(0.9);}
+           100% { transform: scale(1);}
+        }
+        .title {
+            color: white;
+            background-color: rgba(137, 0, 127, 0.3);
+            position: absolute;
+            padding: 0 4pt;
+        }
+        .pic{
+            width: 100%;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/LCalendar.js?v=20180808"></script>
+<script>
+    function showList(id) {
+        $.ajax({
+            type: "GET",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            url: "/nogizaka/message/getBlogList.do?day=" + id,
+            dataType: "json",
+            success: function (list) {
+                var innerHTML = "";
+                for (var i in list) {
+                    var detail = list[i];
+                    var date = new Date(detail.date);
+                    var year = date.getFullYear();
+                    var mon = date.getMonth() + 1;
+                    mon = mon < 10 ? "0" + mon : mon;
+                    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                    var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var headImg = getHeadImgUrl(detail.author);
+                    innerHTML += "<div class='item'>";
+                    innerHTML += "  <div class='itemHead' onclick='window.location.href=\"/nogizaka/memberBlog.html?name=" + detail.author + "&pageNum=1\";'><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
+                    innerHTML += "     </span> <span class='date'>" + year + "/" + mon + "/" + day + " " + hour + ":" + min + "</span>";
+                    innerHTML += "  </div>";
+                    innerHTML += "  <div class='itemPic' onclick='window.location.href=\"/nogizaka/blogDetail.html?id=" + detail.id + "\";'>";
+                    innerHTML += "      <span class='title'>" + detail.title + "</span>";
+                    innerHTML += "      <img class='pic' src='" + detail.pic + "'/>";
+                    innerHTML += "  </div>";
+                    innerHTML += "</div>";
+                }
+                if (!innerHTML) {
+                    innerHTML = "<img style='width:100%;' src='image/noblog.jpeg'/>";
+                }
+                $("#sheet").prop("innerHTML", innerHTML);
+            }
+        });
+    }
+    function getHeadImgUrl(author) {
+        if ('staff' == author) {
+            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+        }
+        //'http://img.nogizaka46.com/www/smph/member/img/wakatsukiyumi_prof.jpg';
+        var sp = author.split('.');
+        if (2 != sp.length) {
+            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+        }
+        if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
+            sp[1] +='u';
+        }
+        return 'http://img.nogizaka46.com/www/smph/member/img/'+sp[1]+sp[0]+'_prof.jpg';
+    }
+    function getCurr() {
+        var date = new Date();
+        return getDateStr(date);
+    }
+    function getDateStr(date) {
+        var year = date.getFullYear();
+        var mon = date.getMonth() + 1;
+        mon = mon < 10 ? "0" + mon : mon;
+        var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        return year + "-" + mon + "-" + day;
+    }
+    function getNxtDayStr(dateStr, days) {
+        var date = new Date();
+        if(dateStr) {
+            var sp = dateStr.split("-");
+            date.setFullYear(sp[0]);
+            date.setMonth(sp[1]-1);
+            date.setDate(sp[2]);
+        }
+        date = new Date(date.getTime() + days*24*60*60*1000);
+        return getDateStr(date);
+    }
+    $(document).ready(function () {
+        var map = {};
+        var href = window.location.href;
+        if (href.indexOf('?') != -1 && href.indexOf('=') != -1) {
+            var params = href.split('?')[1].split('&');
+            for (var index in params) {
+                var sp = params[index].split('=');
+                if (2 == sp.length) {
+                    map[sp[0]] = sp[1];
+                }
+            }
+        }
+        var curr = getCurr();
+        var id = map.day ? map.day : curr;
+        $("#showpic").attr("href", "/nogizaka/picPage.html?d=" + id.replace(/-/g,""));
+        var calendar = new LCalendar();
+        calendar.init({
+            'trigger': '#pickdate', //标签id
+            'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+            'minDate': '2011-11-11', //最小日期
+            'maxDate' : curr
+        });
+        document.querySelector("#pickdate").value = id;
+        $("#pickdate").bind("input propertychange change", function () {
+            $("#butt").text(this.value);
+            window.location.href = "/nogizaka/blogList.html?day=" + this.value;
+        });
+        showList(id);
+        $("#butt").text(id);
+        if(id == '2011-11-11') {
+            $("#preday").attr("style", "background-color:#f9b8f4");
+        } else {
+            var pre = getNxtDayStr(id, -1);
+            $("#preday").click(function(){window.location.href = "/nogizaka/blogList.html?day=" + pre;});
+        }
+
+        if(curr == id) {
+            $("#nextday").attr("style", "background-color:#f9b8f4");
+        } else {
+            var nxt = getNxtDayStr(id, 1);
+            $("#nextday").click(function(){window.location.href = "/nogizaka/blogList.html?day=" + nxt;});
+        }
+    });
+
+    </script>
+    <title>博客</title>
+</head>
+<body>
+    <div class="datepicker"><div id="preday" class="day">前一天</div><div id="butt" onclick="$('#pickdate').click();">选择日期</div><div id="nextday" class="day">后一天</div></div>
+    <input type="hidden" class="input" id="pickdate"/>
+    <div id="nogi">
+        <div id="icon">
+            <div id="fortysix">46</div>
+        </div>
+        <div class="nogizaka">乃木坂46</div>
+        <a href="/nogizaka/blogLinkList.html">查看成员</a>
+        <a id="showpic" href="#">今日图片</a>
+    </div>
+    <div class="blogList" id="sheet">
+    </div>
+</body>
+</html>
