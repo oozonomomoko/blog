@@ -118,7 +118,7 @@
             $.ajax({
                 type: "GET",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                url: "/nogizaka/message/getBlog.do?id=" + id,
+                url: "/blog/data/" + id,
                 dataType: "json",
                 success: function (detail) {
                     var date = new Date(detail.date);
@@ -170,7 +170,7 @@
                         $("#sheet .dd2").text(zh[date.getDay()]);
                     }
                     $("#sheet .author")[0].onclick = function () {
-                        window.location.href = '/nogizaka/memberBlog.html?name=' + detail.author + "&pageNum=1";
+                        window.location.href = '/blog/memberBlog.html?name=' + detail.author + "&pageNum=1";
                     };
                 }
             });
