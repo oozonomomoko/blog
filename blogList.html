@@ -153,7 +153,7 @@
         $.ajax({
             type: "GET",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            url: "/nogizaka/message/getBlogList.do?day=" + id,
+            url: "/blog/day/" + id,
             dataType: "json",
             success: function (list) {
                 var innerHTML = "";
@@ -168,10 +168,10 @@
                     var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
                     var headImg = getHeadImgUrl(detail.author);
                     innerHTML += "<div class='item'>";
-                    innerHTML += "  <div class='itemHead' onclick='window.location.href=\"/nogizaka/memberBlog.html?name=" + detail.author + "&pageNum=1\";'><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
+                    innerHTML += "  <div class='itemHead' onclick='window.location.href=\"/blog/memberBlog.html?name=" + detail.author + "&pageNum=1\";'><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
                     innerHTML += "     </span> <span class='date'>" + year + "/" + mon + "/" + day + " " + hour + ":" + min + "</span>";
                     innerHTML += "  </div>";
-                    innerHTML += "  <div class='itemPic' onclick='window.location.href=\"/nogizaka/blogDetail.html?id=" + detail.id + "\";'>";
+                    innerHTML += "  <div class='itemPic' onclick='window.location.href=\"/blog/blogDetail.html?id=" + detail.id + "\";'>";
                     innerHTML += "      <span class='title'>" + detail.title + "</span>";
                     innerHTML += "      <img class='pic' src='" + detail.pic + "'/>";
                     innerHTML += "  </div>";
@@ -234,7 +234,7 @@
         }
         var curr = getCurr();
         var id = map.day ? map.day : curr;
-        $("#showpic").attr("href", "/nogizaka/picPage.html?d=" + id.replace(/-/g,""));
+        $("#showpic").attr("href", "/blog/picPage.html?d=" + id.replace(/-/g,""));
         var calendar = new LCalendar();
         calendar.init({
             'trigger': '#pickdate', //标签id
@@ -245,7 +245,7 @@
         document.querySelector("#pickdate").value = id;
         $("#pickdate").bind("input propertychange change", function () {
             $("#butt").text(this.value);
-            window.location.href = "/nogizaka/blogList.html?day=" + this.value;
+            window.location.href = "/blog/blogList.html?day=" + this.value;
         });
         showList(id);
         $("#butt").text(id);
@@ -253,14 +253,14 @@
             $("#preday").attr("style", "background-color:#f9b8f4");
         } else {
             var pre = getNxtDayStr(id, -1);
-            $("#preday").click(function(){window.location.href = "/nogizaka/blogList.html?day=" + pre;});
+            $("#preday").click(function(){window.location.href = "/blog/blogList.html?day=" + pre;});
         }
 
         if(curr == id) {
             $("#nextday").attr("style", "background-color:#f9b8f4");
         } else {
             var nxt = getNxtDayStr(id, 1);
-            $("#nextday").click(function(){window.location.href = "/nogizaka/blogList.html?day=" + nxt;});
+            $("#nextday").click(function(){window.location.href = "/blog/blogList.html?day=" + nxt;});
         }
     });
 
@@ -274,8 +274,8 @@
         <div id="icon">
             <div id="fortysix">46</div>
         </div>
-        <div class="nogizaka">乃木坂46</div>
-        <a href="/nogizaka/blogLinkList.html">查看成员</a>
+        <div class="">乃木坂46</div>
+        <a href="/blog/blogLinkList.html">查看成员</a>
         <a id="showpic" href="#">今日图片</a>
     </div>
     <div class="blogList" id="sheet">
