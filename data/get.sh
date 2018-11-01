@@ -1,19 +1,7 @@
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47532 -O 47532
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47533 -O 47533
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47534 -O 47534
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47536 -O 47536
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47537 -O 47537
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47538 -O 47538
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47539 -O 47539
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47540 -O 47540
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47542 -O 47542
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47550 -O 47550
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47553 -O 47553
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47554 -O 47554
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47555 -O 47555
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47557 -O 47557
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47581 -O 47581
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47582 -O 47582
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47583 -O 47583
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47584 -O 47584
-
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47588 -O 47588
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47589 -O 47589
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47590 -O 47590
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47592 -O 47592
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47595 -O 47595
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47598 -O 47598
+wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47599 -O 47599
