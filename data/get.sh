@@ -1,47 +1,6 @@
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47888 -O 47888
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47891 -O 47891
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47894 -O 47894
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47895 -O 47895
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47908 -O 47908
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47916 -O 47916
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47917 -O 47917
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47918 -O 47918
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47919 -O 47919
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47920 -O 47920
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47921 -O 47921
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47922 -O 47922
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47924 -O 47924
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47928 -O 47928
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47929 -O 47929
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47930 -O 47930
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47931 -O 47931
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47932 -O 47932
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47936 -O 47936
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47937 -O 47937
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47938 -O 47938
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47939 -O 47939
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47954 -O 47954
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47955 -O 47955
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47975 -O 47975
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47977 -O 47977
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47978 -O 47978
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47979 -O 47979
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47983 -O 47983
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47985 -O 47985
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=47986 -O 47986
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48085 -O 48085
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48099 -O 48099
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48100 -O 48100
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48103 -O 48103
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48104 -O 48104
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48105 -O 48105
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48112 -O 48112
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48113 -O 48113
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48120 -O 48120
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48121 -O 48121
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48123 -O 48123
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48127 -O 48127
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48128 -O 48128
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48139 -O 48139
-wget -nc -q http://ikuta.club/nogizaka/message/getBlog.do?id=48141 -O 48141
-
+#!/bin/bash
+for line in `cat notrans.txt`
+do
+    wget -q http://ikuta.club/nogizaka/message/getBlog.do?id=$line -O $line
+    echo $line
+done
