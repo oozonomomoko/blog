@@ -177,12 +177,12 @@
                     var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
                     var headImg = getHeadImgUrl(detail.author);
                     innerHTML += "<div class='item'>";
-                    innerHTML += "  <div class='itemHead' onclick='window.location.href=\"/blog/memberBlog.html?name=" + detail.author + "&pageNum=1\";'><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
+                    innerHTML += "  <div class='itemHead'><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
                     innerHTML += "     </span> <span class='date'>" + year + "/" + mon + "/" + day + " " + hour + ":" + min + "</span>";
                     innerHTML += "  </div>";
                     innerHTML += "  <div class='itemPic' onclick='window.location.href=\"/blog/blogDetail.html?id=" + detail.id + "\";'>";
                     innerHTML += "      <span class='title'>" + detail.title + "</span>";
-                    innerHTML += "      <img class='pic' src='" + detail.pic.replace("ikuta.club/nogizaka", "oozonomomoko.github.io/blog") + "'/>";
+                    innerHTML += "      <img class='pic' src='" + detail.pic.replace("ikuta.club/nogizaka", "oozonomomoko.github.io/blog").replace("img.nogizaka46.com/www/smph/member/img", "oozonomomoko.github.io/blog/image/head") + "'/>";
                     innerHTML += "  </div>";
                     innerHTML += "</div>";
                 }
@@ -195,17 +195,17 @@
     }
     function getHeadImgUrl(author) {
         if ('staff' == author) {
-            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+            return 'https://oozonomomoko.github.io/blog/image/staff_list.jpg';
         }
         //'http://img.nogizaka46.com/www/smph/member/img/wakatsukiyumi_prof.jpg';
         var sp = author.split('.');
         if (2 != sp.length) {
-            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+            return 'https://oozonomomoko.github.io/blog/image/staff_list.jpg';
         }
         if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
             sp[1] +='u';
         }
-        return 'http://img.nogizaka46.com/www/smph/member/img/'+sp[1]+sp[0]+'_prof.jpg';
+        return 'https://oozonomomoko.github.io/blog/image/'+sp[1]+sp[0]+'_prof.jpg';
     }
     function getCurr() {
         var date = new Date();
