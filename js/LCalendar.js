@@ -90,8 +90,10 @@ window.LCalendar = (function() {
                 dateCtrlInit();
                 var lcalendar_cancel = _self.gearDate.querySelector(".lcalendar_cancel");
                 lcalendar_cancel.addEventListener('touchstart', cancelLcalendar);
+                lcalendar_cancel.addEventListener('mousedown', cancelLcalendar);
                 var lcalendar_finish = _self.gearDate.querySelector(".lcalendar_finish");
                 lcalendar_finish.addEventListener('touchstart', finishMobileDate);
+                lcalendar_finish.addEventListener('mousedown', finishMobileDate);
                 var date_yy = _self.gearDate.querySelector(".date_yy");
                 var date_mm = _self.gearDate.querySelector(".date_mm");
                 var date_dd = _self.gearDate.querySelector(".date_dd");
@@ -104,6 +106,13 @@ window.LCalendar = (function() {
                 date_yy.addEventListener('touchend', gearTouchEnd);
                 date_mm.addEventListener('touchend', gearTouchEnd);
                 date_dd.addEventListener('touchend', gearTouchEnd);
+                
+                date_yy.addEventListener('mousedown', gearTouchStart);
+                date_mm.addEventListener('mousedown', gearTouchStart);
+                date_dd.addEventListener('mousedown', gearTouchStart);
+                date_yy.addEventListener('mouseup', gearTouchEnd);
+                date_mm.addEventListener('mouseup', gearTouchEnd);
+                date_dd.addEventListener('mouseup', gearTouchEnd);
             }
             //初始化年月日插件默认值
             function dateCtrlInit() {
@@ -496,7 +505,8 @@ window.LCalendar = (function() {
                     }
                 }
                 clearInterval(target["int_" + target.id]);
-                target["old_" + target.id] = e.targetTouches[0].screenY;
+                var screenY = e.screenY?e.screenY:e.targetTouches[0].screenY;
+                target["old_" + target.id] = screenY;
                 target["o_t_" + target.id] = (new Date()).getTime();
                 var top = target.getAttribute('top');
                 if (top) {
@@ -505,6 +515,7 @@ window.LCalendar = (function() {
                     target["o_d_" + target.id] = 0;
                 }
                 target.style.webkitTransitionDuration = target.style.transitionDuration = '0ms';
+                this.addEventListener("mousemove", gearTouchMove);
             }
             //手指移动
             function gearTouchMove(e) {
@@ -517,18 +528,20 @@ window.LCalendar = (function() {
                         break
                     }
                 }
-                target["new_" + target.id] = e.targetTouches[0].screenY;
+                var screenY = e.screenY?e.screenY:e.targetTouches[0].screenY;
+                target["new_" + target.id] = screenY;
                 target["n_t_" + target.id] = (new Date()).getTime();
                 var f = (target["new_" + target.id] - target["old_" + target.id]) * 30 / window.innerHeight;
                 target["pos_" + target.id] = target["o_d_" + target.id] + f;
                 target.style["-webkit-transform"] = 'translate3d(0,' + target["pos_" + target.id] + 'em,0)';
                 target.setAttribute('top', target["pos_" + target.id] + 'em');
-                if (e.targetTouches[0].screenY < 1) {
+                if (screenY < 1) {
                     gearTouchEnd(e);
                 };
             }
             //离开屏幕
             function gearTouchEnd(e) {
+                this.removeEventListener("mousemove", gearTouchMove);
                 e.preventDefault();
                 var target = e.target;
                 while (true) {

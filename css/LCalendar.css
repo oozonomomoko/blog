@@ -47,7 +47,8 @@
 
 .slideInUp {
     -webkit-animation: slideInUp .3s;
-            animation: slideInUp .3s;
+    animation: slideInUp .3s;
+    cursor: grab;
 }
 
 @-webkit-keyframes slideInUp {
@@ -202,7 +203,7 @@
 }
 
 .date_btn {
-    background-color: #a18ada;
+    background-color: #89007F;
     color: white;
     font-size: 1.6em;
     line-height: 1em;
