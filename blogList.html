@@ -190,7 +190,8 @@
                     innerHTML = "<img style='width:100%;' src='image/noblog.jpeg'/>";
                 }
                 $("#sheet").prop("innerHTML", innerHTML);
-            }
+            },
+            error: function (){$("#sheet").prop("innerHTML", "<img style='width:100%;' src='image/noblog.jpeg'/>");}
         });
     }
     function getHeadImgUrl(author) {
@@ -241,7 +242,7 @@
                 }
             }
         }
-        var curr = "2019-02-25";//getCurr();
+        var curr = getCurr();
         var id = map.day ? map.day : curr;
         $("#showpic").attr("href", "/blog/picPage.html?d=" + id.replace(/-/g,""));
         var calendar = new LCalendar();
