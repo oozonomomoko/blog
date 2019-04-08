@@ -62,7 +62,7 @@ function replaceImgsrc(ele, imgpath, id) {
             img.src = imgMap[old];
         } else if (old) {
             var type = old.substr(old.lastIndexOf("."));
-            var newSrc = "blog/" + imgpath + "/" + id + "_" + index + type;
+            var newSrc = "../blog/" + imgpath + "/" + id + "_" + index + type;
             img.src = newSrc;
             imgMap[old] = newSrc;
             index++;
@@ -88,8 +88,8 @@ $(document).ready(function () {
     var isZh = false;
     var href = window.location.href;
     var id = href.split("?")[1].split("&")[0].split("=")[1].split("#")[0];
-    function getDetailPic(pic){
-        return pic.replace(/http.*ikuta\.club\/nogizaka\//,'').replace(/http.*img\.nogizaka46\.com\/www\/smph\/member\/img/, 'image/head').replace(/\/\d{8}\//,'/'+year+'/');
+    function getDetailPic(pic, year){
+        return pic.replace(/http.*ikuta\.club\/nogizaka\//,'../').replace(/http.*img\.nogizaka46\.com\/www\/smph\/member\/img/, '../image/head').replace(/\/\d{8}\//,'/'+year+'/');
     }
     $.ajax({
         type: "GET",
@@ -118,11 +118,11 @@ $(document).ready(function () {
                 replaceImgsrc(transEle, year, id);
                 contactTrans(conEle, transEle);
             }
-            $(".main_list").css("background-image", "url("+getDetailPic(detail.pic)+")");
+            $(".main_list").css("background-image", "url("+getDetailPic(detail.pic, year)+")");
             $(".page_title_in .en").text(detail.authorName);
             $(".page_title_in .jp").text(detail.author.toUpperCase());
             $(".article_blogkiji .title a").attr("href", detail.url);
-            $(".profile a").attr("href", '/nogizaka/v1/memberBlog.html#name=' + detail.author);
+            $(".profile a").attr("href", '../memberBlog.html#name=' + detail.author);
             if (detail.haveTrans) {
                 $(".translate").click(function () {
                     document.querySelector(".article_blogkiji .text_area").innerHTML = '';
