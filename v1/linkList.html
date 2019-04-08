@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="css/index_blue.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/mplus1p.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <title>乃木坂46</title>
+</head>
+<body  id="page_top">      <div id="fb-root"></div>
+
+    <div class="container">
+<div class="header_wrap">
+      <header class="header">
+        <h1 class="logo"><a href="/nogizaka/v1/blogList.html">乃木坂46 BLOG BACKUP SITE</a></h1>
+        <div class="menu">
+          <nav class="nav btn-hamburger btn-right btn-toggle"><span class="icon-bar icon-bar1"></span><span class="icon-bar icon-bar2"></span><span class="icon-bar icon-bar3"></span></nav>
+          <ul class="menu_group">
+            <li class="menu_list"><a href="/nogizaka/v1/blogList.html">BLOG</a></li>
+            <li class="menu_list"><a href="/nogizaka/v1/linkList.html">MEMBER</a></li>
+          </ul>
+        </div>
+      </header>
+</div>      
+    <main class="main main_top" style="background-image:url(img/main.jpg);"><img class="sp" src="img/main.jpg"></main>
+
+      <div class="content">
+        <div class="article article_blog">
+          <div class="article_title">
+            <div class="jp">ブログ</div>
+            <div class="en">BLOG</div>
+          </div>
+          <div class="pager2"></div>
+          <div class="list_group"></div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer_container">
+          <div class="footer_logo"><a href="/nogizaka/v1/blogList.html">乃木坂46</a></div>
+          <div class="footer_menu">
+            <ul class="footer_menu_group">
+              <li class="footer_menu_list"><a href="/nogizaka/v1/blogList.html">BLOG</a></li>
+              <li class="footer_menu_list"><a href="/nogizaka/v1/linkList.html">MEMBER</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer_bottom">
+          <div class="copy">&amp;copy乃木坂46LLC</div>
+        </div>
+      </footer>
+    <script>
+    
+    function getHeadImgUrl(author) {
+        if ('staff' == author) {
+            return 'image/head/staff_list.jpg';
+        }
+        var sp = author.split('.');
+        if (2 != sp.length) {
+            return 'image/head/staff_list.jpg';
+        }
+        if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
+            sp[1] +='u';
+        }
+        return 'image/head/'+sp[1]+sp[0]+'_prof.jpg';
+    }
+    var list = {
+    '一期生':[{'name':'manatsu.akimoto','kanji':'秋元 真夏'},
+{'name':'mikumo.ando','kanji':'安藤 美雲'},
+{'name':'erika.ikuta','kanji':'生田 絵梨花'},
+{'name':'rina.ikoma','kanji':'生駒 里奈'},
+{'name':'rena.ichiki','kanji':'市來 玲奈'},
+{'name':'nene.ito','kanji':'伊藤 寧々'},
+{'name':'marika.ito','kanji':'伊藤 万理華'},
+{'name':'sayuri.inoue','kanji':'井上 小百合'},
+{'name':'yumiko.iwase','kanji':'岩瀬 佑美子'},
+{'name':'misa.eto','kanji':'衛藤 美彩'},
+{'name':'yukina.kashiwa','kanji':'柏 幸奈'},
+{'name':'hina.kawago','kanji':'川後 陽菜'},
+{'name':'mahiro.kawamura','kanji':'川村 真洋'},
+{'name':'chiharu.saito','kanji':'斎藤 ちはる'},
+{'name':'asuka.saito','kanji':'齋藤 飛鳥'},
+{'name':'yuuri.saito','kanji':'斉藤 優里'},
+{'name':'reika.sakurai','kanji':'桜井 玲香'},
+{'name':'mai.shiraishi','kanji':'白石 麻衣'},
+{'name':'kazumi.takayama','kanji':'高山 一実'},
+{'name':'kana.nakada','kanji':'中田 花奈'},
+{'name':'himeka.nakamoto','kanji':'中元 日芽香'},
+{'name':'seira.nagashima','kanji':'永島 聖羅'},
+{'name':'nanase.nishino','kanji':'西野 七瀬'},
+{'name':'ami.noujo','kanji':'能條 愛未'},
+{'name':'nanami.hashimoto','kanji':'橋本 奈々未'},
+{'name':'seira.hatanaka','kanji':'畠中 清羅'},
+{'name':'hina.higuchi','kanji':'樋口 日奈'},
+{'name':'mai.fukagawa','kanji':'深川 麻衣'},
+{'name':'minami.hoshino','kanji':'星野 みなみ'},
+{'name':'sayuri.matsumura','kanji':'松村 沙友理'},
+{'name':'seira.miyazawa','kanji':'宮澤 成良'},
+{'name':'rina.yamato','kanji':'大和 里菜'},
+{'name':'yumi.wakatsuki','kanji':'若月 佑美'},
+{'name':'maaya.wada','kanji':'和田 まあや'},
+{'name':'rena.matsui','kanji':'松井 玲奈','tag':'no blog'},
+{'name':'','kanji':'吉本 彩华','tag':'no blog'},
+{'name':'','kanji':'山本 穗乃香','tag':'no blog'},
+],
+
+'二期生':[{'name':'karin.itou','kanji':'伊藤 かりん'},
+{'name':'junna.itou','kanji':'伊藤 純奈'},
+{'name':'hinako.kitano','kanji':'北野 日奈子'},
+{'name':'iori.sagara','kanji':'相楽 伊織'},
+{'name':'kotoko.sasaki','kanji':'佐々木 琴子'},
+{'name':'mai.shinuchi','kanji':'新内 眞衣'},
+{'name':'ayane.suzuki','kanji':'鈴木 絢音'},
+{'name':'ranze.terada','kanji':'寺田 蘭世'},
+{'name':'nanami.nishikawa','kanji':'西川 七海'},
+{'name':'miona.hori','kanji':'堀 未央奈'},
+{'name':'rena.yamazaki','kanji':'山崎 怜奈'},
+{'name':'miria.watanabe','kanji':'渡辺 みり愛'},
+{'name':'','kanji':'矢田 里沙子','tag':'no blog'},
+{'name':'','kanji':'米德 京花','tag':'no blog'}
+],
+
+'三期生':[{'name':'riria.itou','kanji':'伊藤 理々杏'},
+{'name':'renka.iwamoto','kanji':'岩本 蓮加'},
+{'name':'minami.umezawa','kanji':'梅澤 美波'},
+{'name':'momoko.oozono','kanji':'大園 桃子'},
+{'name':'shiori.kubo','kanji':'久保 史緒里'},
+{'name':'tamami.sakaguchi','kanji':'阪口 珠美'},
+{'name':'kaede.satou','kanji':'佐藤 楓'},
+{'name':'reno.nakamura','kanji':'中村 麗乃'},
+{'name':'hazuki.mukai','kanji':'向井 葉月'},
+{'name':'mizuki.yamashita','kanji':'山下 美月'},
+{'name':'ayanochristie.yoshida','kanji':'吉田 綾乃クリスティー'},
+{'name':'yuuki.yoda','kanji':'与田 祐希'}],
+'運营':[{'name':'staff','kanji':'運营'}]
+};
+    var innerHTML = '';
+    for (var kisei in list) {
+        var kiseiList = list[kisei];
+        for (var i=0;i<kiseiList.length;i++){
+            var detail = kiseiList[i];
+            var headImg = getHeadImgUrl(detail.name);
+            innerHTML += "<div class=\"list_card\"><a href=\"/nogizaka/v1/memberBlog.html#name=" + detail.name + "\"><div class=\"blog_card\"><div class=\"thumb\">";
+            innerHTML += "<div class=\"thumb_img\" style=\"background-image:url(" + headImg + ");\"></div></div>";
+            innerHTML += "<div class=\"box\"><div class=\"title\">" + detail.kanji + "</div>";
+            innerHTML += "<div class=\"date\">" + kisei + "</div></div></div></a></div>";
+        }
+    }
+    var target = document.querySelector(".list_group");
+    target.innerHTML = innerHTML;
+    </script>
+
+    </div></body>
+</html>
