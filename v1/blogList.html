@@ -73,8 +73,8 @@
           }
         });
         var lastRenderTime = new Date();
-        function getDetailPic(pic){
-            return pic.replace(/http.*ikuta\.club\/nogizaka\//,'').replace(/http.*img\.nogizaka46\.com\/www\/smph\/member\/img/, 'image/head').replace(/\/\d{8}\//,'/'+year+'/');
+        function getDetailPic(pic, year){
+            return pic.replace(/http.*ikuta\.club\/nogizaka\//,'../').replace(/http.*img\.nogizaka46\.com\/www\/smph\/member\/img/, '../image/head').replace(/\/\d{8}\//,'/'+year+'/');
         }
         function showList(id) {
             let renderTime = new Date();
@@ -102,12 +102,12 @@
                             var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
                             var headImg = getHeadImgUrl(detail.author);
                             innerHTML += "<div class=\"list_card\"><a href=\"/nogizaka/v1/blogDetail.html?id=" + detail.id + "\"><div class=\"blog_card\"><div class=\"thumb\">";
-                            innerHTML += "<div class=\"thumb_img\" style=\"background-image:url(" + getDetailPic(detail.pic) + ");\"></div></div>";
+                            innerHTML += "<div class=\"thumb_img\" style=\"background-image:url(" + getDetailPic(detail.pic, year) + ");\"></div></div>";
                             innerHTML += "<div class=\"box\"><div class=\"author\">#" + detail.authorName + "#</div><div class=\"title\">" + detail.title + "</div>";
                             innerHTML += "<div class=\"date\">" + year + "." + mon + "." + day + " " + hour + ":" + min + "</div></div></div></a></div>";
                         }
                         if (!innerHTML) {
-                            innerHTML = "<div><img style='width:100%;' src='/nogizaka/image/noblog.jpg'/><div>";
+                            innerHTML = "<div><img style='width:100%;' src='../image/noblog.jpg'/><div>";
                         }
                         target.innerHTML = innerHTML;
                     }
@@ -116,7 +116,7 @@
                 error: function(){
                     if (renderTime - lastRenderTime > 0) {
                         lastRenderTime = renderTime;
-                        target.innerHTML = "<div><img style='width:100%;' src='/nogizaka/image/noblog.jpg'/><div>";
+                        target.innerHTML = "<div><img style='width:100%;' src='../image/noblog.jpg'/><div>";
                     }
                     loading.removeClass('loading');
                 }
@@ -125,16 +125,16 @@
         
         function getHeadImgUrl(author) {
             if ('staff' == author) {
-                return 'image/head/staff_list.jpg';
+                return '../image/head/staff_list.jpg';
             }
             var sp = author.split('.');
             if (2 != sp.length) {
-                return 'image/head/staff_list.jpg';
+                return '../image/head/staff_list.jpg';
             }
             if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
                 sp[1] +='u';
             }
-            return 'image/head/'+sp[1]+sp[0]+'_prof.jpg';
+            return '../image/head/'+sp[1]+sp[0]+'_prof.jpg';
         }
         function getDateStr(date) {
             var year = date.getFullYear();
