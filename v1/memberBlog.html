@@ -141,17 +141,16 @@
         
         function getHeadImgUrl(author) {
             if ('staff' == author) {
-                return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+                return '../image/head/staff_list.jpg';
             }
-            //'http://img.nogizaka46.com/www/smph/member/img/wakatsukiyumi_prof.jpg';
             var sp = author.split('.');
             if (2 != sp.length) {
-                return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+                return '../image/head/staff_list.jpg';
             }
             if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
                 sp[1] +='u';
             }
-            return 'http://img.nogizaka46.com/www/smph/member/img/'+sp[1]+sp[0]+'_prof.jpg';
+            return '../image/head/'+sp[1]+sp[0]+'_prof.jpg';
         }
         function jumpByHref(){
             let data = {};
