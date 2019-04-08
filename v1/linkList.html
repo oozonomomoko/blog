@@ -59,16 +59,16 @@
     
     function getHeadImgUrl(author) {
         if ('staff' == author) {
-            return 'image/head/staff_list.jpg';
+            return '../image/head/staff_list.jpg';
         }
         var sp = author.split('.');
         if (2 != sp.length) {
-            return 'image/head/staff_list.jpg';
+            return '../image/head/staff_list.jpg';
         }
         if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
             sp[1] +='u';
         }
-        return 'image/head/'+sp[1]+sp[0]+'_prof.jpg';
+        return '../image/head/'+sp[1]+sp[0]+'_prof.jpg';
     }
     var list = {
     '一期生':[{'name':'manatsu.akimoto','kanji':'秋元 真夏'},
