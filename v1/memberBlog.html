@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="css/index_blue.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/mplus1p.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <title>乃木坂46</title>
+</head>
+<body  id="page_top">      
+<div id="fb-root"></div>
+<div class="container">
+   <div class="header_wrap"> 
+    <header class="header"> 
+     <h1 class="logo"><a href="/nogizaka/v1/blogList.html">乃木坂46 BLOG BACKUP SITE</a></h1> 
+     <div class="menu"> 
+      <nav class="nav btn-hamburger btn-right btn-toggle">
+       <span class="icon-bar icon-bar1"></span>
+       <span class="icon-bar icon-bar2"></span>
+       <span class="icon-bar icon-bar3"></span>
+      </nav> 
+      <ul class="menu_group"> 
+        <li class="menu_list"><a href="/nogizaka/v1/blogList.html">BLOG</a></li>
+        <li class="menu_list"><a href="/nogizaka/v1/linkList.html">MEMBER</a></li>
+      </ul> 
+     </div> 
+    </header> 
+   </div> 
+   <main class="main main_list"> 
+    <div class="page_title"> 
+     <div class="page_title_in"> 
+      <div class="en">Loading...</div> 
+      <div class="jp"></div> 
+     </div> 
+    </div>
+   </main> 
+      <div class="content">
+        <div class="article article_blog">
+          <div class="article_title">
+            <div class="jp">ブログ</div>
+            <div class="en">BLOG PAGE 1</div>
+          </div>
+          <div class="list_group"></div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="footer_container">
+          <div class="footer_logo"><a href="/nogizaka/v1/blogList.html">乃木坂46</a></div>
+          <div class="footer_menu">
+            <ul class="footer_menu_group">
+              <li class="footer_menu_list"><a href="/nogizaka/v1/blogList.html">BLOG</a></li>
+              <li class="footer_menu_list"><a href="/nogizaka/v1/linkList.html">MEMBER</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer_bottom">
+          <div class="copy">&amp;copy乃木坂46LLC</div>
+        </div>
+      </footer>
+      <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+      <script src="js/nogidate.js" type="text/javascript"></script>
+      <script src="js/nogipage-2.0.js" type="text/javascript"></script>
+      <script src="js/slick.js" type="text/javascript"></script>
+
+    <script>
+        var haveSetHead = false;
+        var totalPage = 1;
+        // SP Menu
+        $(".btn-hamburger").on('click', function () {
+          if ($(this).hasClass("active")) {
+            $(this).parents().find(".header").removeClass("open");
+            $(this).removeClass("active")
+            $("body").removeClass("hidden");
+          } else {
+            $(this).parents().find(".header").addClass("open");
+            $(this).addClass("active")
+            $("body").addClass("hidden");
+          }
+        });
+        var lastRenderTime = new Date();
+        function showList(name, pageNum) {
+            let renderTime = new Date();
+            var target = document.querySelector(".list_group");
+            var loading = $('.article_title');
+            loading.addClass('loading');
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                url: "/nogizaka/message/getMemberBlog.do?name=" + name + "&pageNum=" + pageNum,
+                dataType: "json",
+                success: function (list) {
+                    if (renderTime - lastRenderTime > 0) {
+                        lastRenderTime = renderTime;
+                        var innerHTML = "";
+                        for (var i in list) {
+                            var detail = list[i];
+                            detail.title = detail.title.length>60?detail.title.substring(0, 60):detail.title;
+                            var date = new Date(detail.date);
+                            var year = date.getFullYear();
+                            var mon = date.getMonth() + 1;
+                            mon = mon < 10 ? "0" + mon : mon;
+                            var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                            var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                            var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                            var headImg = getHeadImgUrl(detail.author);
+                            innerHTML += "<div class=\"list_card\"><a href=\"/nogizaka/v1/blogDetail.html?id=" + detail.id + "\"><div class=\"blog_card\"><div class=\"thumb\">";
+                            innerHTML += "<div class=\"thumb_img\" style=\"background-image:url(" + detail.pic + ");\"></div></div>";
+                            innerHTML += "<div class=\"box\"><div class=\"author\">#" + detail.authorName + "#</div><div class=\"title\">" + detail.title + "</div>";
+                            innerHTML += "<div class=\"date\">" + year + "." + mon + "." + day + " " + hour + ":" + min + "</div></div></div></a></div>";
+                            if (!haveSetHead){
+                                $(".main_list").css("background-image", "url("+headImg+")");
+                                $(".page_title_in .en").text(detail.authorName);
+                                $(".page_title_in .jp").text(detail.author.toUpperCase());
+                                haveSetHead = true;
+                            }
+                        }
+                        if (!innerHTML) {
+                            innerHTML = "<div><img style='width:100%;' src='/nogizaka/image/noblog.jpg'/><div>";
+                        }
+                        target.innerHTML = innerHTML;
+                        $('.article_title .en').text('BLOG PAGE ' + pageNum + '/' + totalPage);
+                    }
+                    loading.removeClass('loading');
+                },
+                error: function(){
+                    if (renderTime - lastRenderTime > 0) {
+                        lastRenderTime = renderTime;
+                        target.innerHTML = "<div><img style='width:100%;' src='/nogizaka/image/noblog.jpg'/><div>";
+                    }
+                    loading.removeClass('loading');
+                }
+            });
+        }
+        
+        function getHeadImgUrl(author) {
+            if ('staff' == author) {
+                return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+            }
+            //'http://img.nogizaka46.com/www/smph/member/img/wakatsukiyumi_prof.jpg';
+            var sp = author.split('.');
+            if (2 != sp.length) {
+                return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+            }
+            if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
+                sp[1] +='u';
+            }
+            return 'http://img.nogizaka46.com/www/smph/member/img/'+sp[1]+sp[0]+'_prof.jpg';
+        }
+        function jumpByHref(){
+            let data = {};
+            let href = window.location.href;
+            let index = href.indexOf('#');
+            if (index != -1 && index+1 < href.length) {
+                let src = href.substring(href.indexOf('#') + 1);
+                let paramsStr = src.split('&');
+                if(paramsStr && paramsStr.length){
+                    for(let i=0; i<paramsStr.length; i++){
+                        let params = paramsStr[i].split('=');
+                        if (params && params.length == 2){
+                            data[params[0]] = params[1];
+                        }
+                    }
+                }
+            }
+            return data;
+        }
+        $(document).ready(function () {
+            let data = jumpByHref();
+            if (!data.name){
+                return;
+            }
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                url: "/nogizaka/message/getMemberBlogCount.do?name=" + data.name,
+                dataType: "json",
+                success: function (result) {
+                    var count = result.count;
+                    totalPage = Math.floor(count/10);
+                    if(count%10 != 0) {
+                        totalPage ++;
+                    }
+                            
+                    let pager = new Nogipage();
+                    pager.init({
+                        "page":data.page?data.page:1,
+                        "totalPage":totalPage,
+                        'showHead': true,
+                        'change':function(pageNum){
+                            window.location.href = '#name=' + data.name + '&page=' + pageNum;
+                            showList(data.name, pageNum);
+                        }
+                    });
+                    window.onpopstate = function(){
+                        let data = jumpByHref();
+                        if (data.page && data.page != pager.page)
+                            pager.reinit(data.page);
+                    };
+                }
+            });
+        });
+    </script>
+
+    </div></body>
+</html>
