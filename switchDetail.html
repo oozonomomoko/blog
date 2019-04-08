@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/smph.css" type="text/css">
+    <style type="text/css">
+        #butt {
+            position: fixed;
+            float: right;
+            top: 13%;
+            right: 10px;
+            width: 35px;
+            z-index: 10;
+            list-style: none;
+        }
+        #butt li {
+            border: solid 1px #7e1083;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            padding-left: 2px;
+        }
+        #butt li a {
+            text-decoration-line: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        var en = {
+            1: "Mon",
+            2: "Tues",
+            3: "Wed",
+            4: "Thur",
+            5: "Fri",
+            6: "Sat",
+            0: "Sun"
+        };
+        var zh = {
+            1: "周一",
+            2: "周二",
+            3: "周三",
+            4: "周四",
+            5: "周五",
+            6: "周六",
+            0: "周日"
+        };
+        $(document).ready(function () {
+            var reg = /\.\.\/\.\.\/photo.*/gi;
+            var isZh = false;
+            var href = window.location.href;
+            var id = href.split("?")[1].split("&")[0].split("=")[1].split("#")[0];
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                url: "/nogizaka/message/getBlog.do?id=" + id,
+                dataType: "json",
+                success: function (detail) {
+                    var date = new Date(detail.date);
+                    var year = date.getFullYear();
+                    var mon = date.getMonth() + 1;
+                    mon = mon < 10 ? "0" + mon : mon;
+                    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                    var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                    var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                    var imgpath = "" + year + mon + day;
+
+                    $("#sheet .yearmonth").text(year + "/" + mon);
+                    $("#sheet .dd1").text(day);
+                    $("#sheet .author").text(detail.authorName);
+                    $("#sheet .kijifoot").text(year + "/" + mon + "/" + day + " " + hour + ":" + min);
+                    $("#butt a")[0].href = detail.url;
+                    if(!detail.haveTrans) {$("#butt a")[1].style.display = 'none';}
+                    $("#butt a")[1].onclick = function () {
+                        if (isZh && detail.haveTrans) {
+                            $("#sheet .entrybodyin").prop("outerHTML", detail.transContent);
+                            $("#sheet .entrytitle a").text(detail.transTitle);
+                            $("title").text(detail.transTitle);
+                            $("#sheet .dd2").text(zh[date.getDay()]);
+                        } else {
+                            $("#sheet .entrybodyin").prop("outerHTML", detail.content);
+                            $("#sheet .entrytitle a").text(detail.title);
+                            $("title").text(detail.title);
+                            $("#sheet .dd2").text(en[date.getDay()]);
+                        }
+                        var forJudge = $("#sheet .entrybodyin img").attr("src");
+                        var multiplex = forJudge && reg.test(forJudge);
+                            var imgMap = {};
+                            var index = 0;
+                            $("#sheet .entrybodyin img").each(function (i) {
+                                var old = $(this).attr("src");
+                                if (multiplex && imgMap[old]) {
+                                    $(this).attr("src", imgMap[old]);
+                                } else {
+                                    var type=old.substr(old.lastIndexOf("."));
+                                    var newSrc = "blog/" + imgpath + "/" + id + "_" + index + type;
+                                    $(this).attr("src", newSrc);
+                                    imgMap[old] = newSrc;
+                                    index ++;
+                                }
+                            })
+
+                        $("#sheet .entrybodyin a img").each(function () {
+                            $(this).parent().removeAttr("href");
+                        })
+                        isZh = !isZh;
+                    };
+                    $("#sheet .author")[0].onclick = function () {
+                        window.location.href='/nogizaka/memberBlog.html?name=' + detail.author + "&pageNum=1";
+                    };
+                    $("#butt a")[1].click();
+                }
+            });
+        });
+    </script>
+    <title>博客详情</title>
+</head>
+<body>
+<div id="container">
+    <ul id="butt">
+        <li><a href="javascript:void(0);">官方原文</a></li>
+        <li><a href="javascript:void(0);">中日切换</a></li>
+    </ul>
+    <div class="main blogstyle" id="blogstyle1">
+        <div id="sheet">
+            <div class="unit">
+                <table class="HH" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td class="date"><span class="yearmonth">2018/06</span> <span class="daydate"> <span
+                                class="dd1">24</span> <span class="dd2">Sun</span> </span></td>
+                        <td class="heading"><span class="author">使劲加载中...</span> <span class="entrytitle">
+                                <a href="javascript:void(0);" style="text-decoration:none;"></a></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="fkd"></div>
+                <div class="entrybody nopad">
+                    <div class="entrybodyin"></div>
+                    <div class="entrybottom">
+                        <div class="kijifoot">2018/06/24 21:20</div>
+                        <div class="asset-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ptop">
+        <a href="#">PAGE TOP ▲</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg width="50" height="25" xmlns="http://www.w3.org/2000/svg">
+    <rect fill="yellow" stroke="yellow" width="50" height="50"/>
+    <g>
+        <path fill="black" stroke="black" d="M0 25 L25 0 L50 0 L25 25 Z"/>
+        <path fill="black" stroke="black" d="M50 25 L75 0 L100 0 L75 25 Z"/>
+        <animateMotion from="-50,0" to="0,0" dur="5s" repeatCount="indefinite"/>
+    </g>
+</svg>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>博客</title>
+    <script type="text/javascript" src="js/Nogipage.js?v=20180910"></script>
+    <style type="text/css">
+        #icon {
+            border-top: 3.6em solid white;
+            border-right: 3.44em solid #89007F;
+            box-shadow: 0 0 16px #a18ada;
+            animation: head 2s ease;
+            float: left;
+            left: 5pt;
+            position: absolute;
+        }
+        @keyframes head {
+            0% {border-right-color:#FFFFFF}
+            100% {border-right-color:#89007F}
+        }
+        #fortysix {
+            position: absolute;
+            top: -38px;
+            left: 34px;
+            font-size: 1em;
+            color: white;
+            font-weight: 500;
+        }
+        #nogi {
+            font-weight: bolder;
+            color: RGB(137,0,127);
+            font-size: 1em;
+            width: 100%;
+            line-height: 3.6em;
+            position: absolute;
+            text-align: center;
+            left: 0;
+            border-bottom: 1px;
+            border-bottom-style: dashed;
+            padding-bottom: 7px;
+        }
+        #nogi a {
+            font-size: 11pt;
+            color: white;
+            background-color: #89007F;
+            line-height: 3.6em;
+            text-decoration: none;
+            padding: 2pt 4pt;
+            position: absolute;
+            right: 5pt;
+        }
+        .nogizaka {
+            float: left;
+            width: 100%;
+        }
+
+
+        /**列表样式*/
+        .blogList {
+            padding-top:50pt;
+            padding-bottom: 46pt;
+            font-size: 10pt;
+            width: 90%;
+        }
+        .detail {
+            float: right;
+            position: fixed;
+            right: 0;
+            top:0;
+            width: 0;
+            font-size: 10pt;
+            height:100%;
+        }
+       .authorName {
+            font-size: 13pt;
+            font-weight: bolder;
+            margin: 0 5pt;
+            line-height: 30pt;
+            float: left;
+        }
+        .date {
+            font-size: 10pt;
+            font-weight: bold;
+            line-height: 32pt;
+            float: right;
+        }
+        .itemHead {
+            height: 32pt;
+            color: #8930ad;
+        }
+        .itemPic {
+            position: relative;
+        }
+        .headImg {
+            height: 30pt;
+            margin: 0 auto;
+            float: left;
+        }
+
+        .item {
+            margin: 0pt 8pt 8pt 8pt;
+            padding: 3pt 5pt;
+            background-color: white;
+            border-radius: 4pt;
+            box-shadow: 0 0 10pt #a18ada;
+            animation: showList .8s ease;
+        }
+        @keyframes showList {
+            0% { transform: scale(0.9);}
+            100% { transform: scale(1);}
+        }
+        .title {
+            color: white;
+            background-color: rgba(137, 0, 127, 0.3);
+            position: absolute;
+            padding: 0 4pt;
+        }
+        .pic{
+            width: 100%;
+        }
+        #Nogipage {
+            top: 10%;
+            bottom: 10%;
+            width: 14%;
+            position: fixed;
+            right: 0;
+            height: 80%;
+            opacity: 0.8;
+        }
+        #Nogipage .nogiPre {
+            height: 10%;
+            width: 100%;
+            position: absolute;
+            background-color: #89007F;
+            border-radius: 100% 0 0 0;
+        }
+        #Nogipage .nogiNxt {
+            height: 10%;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            background-color: #89007F;
+            border-radius: 0 0 0 100%;
+        }
+        #Nogipage .nogiNum {
+            height: 80%;
+            width: 100%;
+            position: absolute;
+            top: 10%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            font-size: 1em;
+        }
+        #Nogipage .nogiNum span {
+            background-color: white;
+            color: #bb5dbd;
+            float: left;
+            text-align: center;
+            font-size: 1.5em;
+            width: 100%;
+            margin-bottom: 0.3em;
+            border: 2px solid;
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+    function getHeadImgUrl(author) {
+        if ('staff' == author) {
+            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+        }
+        //'http://img.nogizaka46.com/www/smph/member/img/wakatsukiyumi_prof.jpg';
+        var sp = author.split('.');
+        if (2 != sp.length) {
+            return 'http://img.nogizaka46.com/blog/pic/staff_list.jpg';
+        }
+        if (sp[1] == 'saito' || sp[1] == 'ito' || sp[1] == 'eto' || sp[1] == 'noujo') {
+            sp[1] +='u';
+        }
+        return 'http://img.nogizaka46.com/www/smph/member/img/'+sp[1]+sp[0]+'_prof.jpg';
+    }
+
+        function contractHTML(list) {
+            var innerHTML = "";
+            for (var i in list) {
+                var detail = list[i];
+                var date = new Date(detail.date);
+                var year = date.getFullYear();
+                var mon = date.getMonth() + 1;
+                mon = mon < 10 ? "0" + mon : mon;
+                var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+                var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+                var headImg = getHeadImgUrl(detail.author);
+                innerHTML += "<div class='item' onclick='window.location.href=\"https://ikuta.club/nogizaka/blogDetail.html?id=" + detail.id + "\";'>";
+                innerHTML += "  <div class='itemHead''><img class='headImg' src='"+headImg+"'/><span class='authorName'>" + detail.authorName;
+                innerHTML += "      </span><span class='date'>" + year + "/" + mon + "/" + day + " " + hour + ":" + min + "</span>";
+                innerHTML += "  </div>";
+                innerHTML += "  <div class='itemPic'>";
+                innerHTML += "      <span class='title'>" + detail.title + "</span>";
+                innerHTML += "      <img class='pic' src='" + detail.pic + "'/>";
+                innerHTML += "  </div>";
+                innerHTML += "</div>";
+            }
+            if (!innerHTML) {
+                innerHTML = "<div class='authorName' cellspacing='0'>" + id + " 未查询到博客</div>";
+            }
+            $("#sheet").prop("innerHTML", innerHTML);
+        }
+        $(document).ready(function () {
+            var map = {};
+            var href = window.location.href;
+            if (href.indexOf('?') != -1 && href.indexOf('=') != -1) {
+                var params = href.split('?')[1].split('&');
+                for (var index in params) {
+                    var sp = params[index].split('=');
+                    if (2 == sp.length) {
+                        map[sp[0]] = sp[1];
+                    }
+                }
+            }
+            var name = map.name;
+            var pageNum = map.pageNum;
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                url: "/nogizaka/message/getMemberBlog.do?name=" + name + "&pageNum=" + pageNum,
+                dataType: "json",
+                success: function (list) {
+                    document.title = list[0].authorName;
+                    contractHTML(list);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                url: "/nogizaka/message/getMemberBlogCount.do?name=" + name,
+                dataType: "json",
+                success: function (result) {
+                    var count = result.count;
+                    var totalPage = Math.floor(count/10);
+                    if(count%10 != 0) {
+                        totalPage ++;
+                    }
+                    new Nogipage().init({
+                        totalPage: totalPage, //总页数
+                        pageNum: pageNum,//当前页
+                        click:function(page){
+                            window.location.href='/nogizaka/memberBlog.html?name=' + name + "&pageNum=" + page;
+                        }//点击某页的回调
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="nogi">
+        <div id="icon">
+            <div id="fortysix">46</div>
+        </div>
+        <div class="nogizaka">乃木坂46</div>
+        <a href="/nogizaka/blogLinkList.html">成员查看</a>
+    </div>
+    <div class="blogList" id="sheet">
+    </div>
+</body>
+</html>

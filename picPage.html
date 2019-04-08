@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        #macy-container div {
+            overflow: hidden;
+        }
+
+        #macy-container div img {
+            width: 100%;
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/macy.js"></script>
+    <script>
+        var masonry;
+        var id;
+        var href = window.location.href;
+        var end = href.indexOf("#");
+        var start = href.indexOf("?");
+        if (-1 != start) {
+            if (-1 != end) {
+                href = href.substring(start + 1, end);
+            } else {
+                href = href.substring(start + 1)
+            }
+        }
+        var plist = href.split("&");
+        for (var p in plist) {
+            if (plist[p].split("=")[0] == "d") {
+                id = plist[p].split("=")[1];
+                break;
+            }
+        }
+        if (!id) {
+            var date = new Date();
+            var year = date.getFullYear();
+            var mon = date.getMonth() + 1;
+            mon = mon < 10 ? "0" + mon : mon;
+            var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            id = year + mon + day;
+        }
+        $.ajax({
+            type: "GET",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            url: "/nogizaka/message/getBlogPic.do?day=" + id,
+            dataType: "json",
+            success: function (pics) {
+                var inner = "";
+                if (pics && pics.length != 0) {
+                    for (var s in pics) {
+                        if (pics[s].indexOf(".gif") == -1) {
+                            inner += "<div><img src='blog/" + id + "/" + pics[s] + "'/></div>";
+                        }
+                    }
+                }
+                document.getElementById("macy-container").innerHTML = inner;
+                masonry = new Macy({
+                    container: '#macy-container', // 图像列表容器id
+                    trueOrder: false,
+                    waitForImages: true,
+                    useOwnImageLoader: false,
+                    debug: false,
+
+                    //设计间距
+                    margin: {
+                        x: 10,
+                        y: 10
+                    },
+
+                    //设置列数
+                    columns: 6,
+
+                    //定义不同分辨率（1200，940，520，400这些是分辨率）
+                    breakAt: {
+                        1200: {
+                            columns: 5
+                        },
+                        940: {
+                            columns: 4
+                        },
+                        520: {
+                            columns: 3
+                        },
+                        400: {
+                            columns: 2
+                        }
+                    }
+                });
+            }
+        });
+
+        window.onresize = function () {
+            masonry.reInit()
+        };
+    </script>
+
+    <title>博客图</title>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <div id="macy-container">
+        </div>
+    </div>
+</section>
+</body>
+</html>
