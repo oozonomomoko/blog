@@ -113,7 +113,7 @@ $(document).ready(function () {
             replaceImgsrc(conEle, year, id);
             var copy = $.parseHTML(detail.content)[0];
             replaceImgsrc(copy, year, id);
-            if (detail.haveTrans) {
+            if (detail.transTitle) {
                 var transEle = $.parseHTML(detail.transContent)[0];
                 replaceImgsrc(transEle, year, id);
                 contactTrans(conEle, transEle);
@@ -123,7 +123,7 @@ $(document).ready(function () {
             $(".page_title_in .jp").text(detail.author.toUpperCase());
             $(".article_blogkiji .title a").attr("href", detail.url);
             $(".profile a").attr("href", '../memberBlog.html#name=' + detail.author);
-            if (detail.haveTrans) {
+            if (detail.transTitle) {
                 $(".translate").click(function () {
                     document.querySelector(".article_blogkiji .text_area").innerHTML = '';
                     if (isZh) {
@@ -131,7 +131,7 @@ $(document).ready(function () {
                         $(".article_blogkiji .title a").html(detail.title);
                         $("title").text(detail.title);
                         $(".article_blogkiji .day").text(detail.date + " | " + en[week]);
-                    } else if (detail.haveTrans) {
+                    } else if (detail.transTitle) {
                         document.querySelector(".article_blogkiji .text_area").appendChild(conEle);
                         $(".article_blogkiji .title a").html('<p class="transLine">' + detail.transTitle + '</p>' + detail.title);
                         $("title").text(detail.transTitle);
