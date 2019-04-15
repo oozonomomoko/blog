@@ -76,6 +76,17 @@
         function getDetailPic(pic, year){
             return pic.replace(/http.*ikuta\.club\/nogizaka\//,'../').replace(/http.*img\.nogizaka46\.com\/www\/smph\/member\/img/, '../image/head').replace(/\/\d{8}\//,'/'+year+'/');
         }
+        function sort(list){
+            for (let i=0; i<list.length-1; i++) {
+                for (let j=i+1; j<list.length; j++) {
+                    if(list[i].id < list[j].id) {
+                        let tmp = list[j];
+                        list[j] = list[i];
+                        list[i] = tmp;
+                    }                   
+                }
+            }
+        }
         function showList(id) {
             let renderTime = new Date();
             var target = document.querySelector(".list_group");
@@ -90,6 +101,7 @@
                     if (renderTime - lastRenderTime > 0) {
                         lastRenderTime = renderTime;
                         var innerHTML = "";
+                        sort(list);
                         for (var i in list) {
                             var detail = list[i];
                             detail.title = detail.title.length>60?detail.title.substring(0, 60):detail.title;
