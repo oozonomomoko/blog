@@ -93,7 +93,7 @@ body {
   -webkit-text-size-adjust: 100%;
   word-wrap: break-word;
   font-size: 1.4rem;
-  font-family: "Noto Sans Japanese",-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif; }
+  font-family: 'Microsoft YaHei';}
 
 pre {
   font-family: sans-serif; }
@@ -141,7 +141,7 @@ i {
   margin: auto; }
 
 body {
-  font-family: Biryani,"M PLUS 1p",-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+  font-family: 'Microsoft YaHei';
   color: #54595E;
   font-size: 1.4rem; }
 
@@ -357,12 +357,13 @@ a {
   position: relative;
   width: 100%;
   text-align: center;
-  text-shadow: 0 0 1px #d800ff;
   z-index: 2000;
-  color: #FFF; }
+  color: #9700b3; }
   .page_title .page_title_in {
     width: 100%;
     text-align: center;
+    background-color: white;
+    opacity: 0.5;
     margin-top: -8rem; }
   .page_title .en {
     font-size: 32px;
@@ -2325,9 +2326,10 @@ li.pager_btn.pager_btn_next,li.pager_btn.pager_btn_prev {
     max-width: 100%; } }
 
 .transLine {
-    color: #72bcda;
-    font-size: 10pt;
-    line-height: 12pt;
+    color: #c676cc;
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 16pt;
     word-break: break-word;}
 .translate {
     float: right;
