@@ -65,8 +65,8 @@ function replaceImgsrc(ele, imgpath, id) {
             var newSrc = "../blog/" + imgpath + "/" + id + "_" + index + type;
             img.src = newSrc;
             imgMap[old] = newSrc;
-            index++;
         }
+        index++;
         img.onerror = function(){
             let bak = imgpath-1;
             this.src=this.src.replace('/'+imgpath+'/', '/'+bak+'/');
