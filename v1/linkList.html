@@ -31,14 +31,6 @@
     <main class="main main_top" style="background-image:url(img/main.jpg);"><img class="sp" src="img/main.jpg"></main>
 
       <div class="content">
-        <div class="article article_blog">
-          <div class="article_title">
-            <div class="jp">ブログ</div>
-            <div class="en">BLOG</div>
-          </div>
-          <div class="pager2"></div>
-          <div class="list_group"></div>
-        </div>
       </div>
 
       <footer class="footer">
@@ -138,21 +130,36 @@
 {'name':'mizuki.yamashita','kanji':'山下 美月'},
 {'name':'ayanochristie.yoshida','kanji':'吉田 綾乃クリスティー'},
 {'name':'yuuki.yoda','kanji':'与田 祐希'}],
+
+'四期生':[{'name':'sakura.endou', 'kanji':'遠藤 さくら'},
+{'name':'haruka.kaki', 'kanji':'賀喜 遥香'},
+{'name':'sayaka.kakehashi', 'kanji':'掛橋 沙耶香'},
+{'name':'saya.kanagawa', 'kanji':'金川 紗耶'},
+{'name':'yuri.kitagawa', 'kanji':'北川 悠理'},
+{'name':'yuna.shibata', 'kanji':'柴田 柚菜'},
+{'name':'rei.seimiya', 'kanji':'清宮 レイ'},
+{'name':'mayu.tamura', 'kanji':'田村 真佑'},
+{'name':'ayame.tsutsui', 'kanji':'筒井 あやめ'},
+{'name':'seira.hayakawa', 'kanji':'早川 聖来'},
+{'name':'mio.yakubo', 'kanji':'矢久 保美緒'}],
+
 '運营':[{'name':'staff','kanji':'運营'}]
 };
     var innerHTML = '';
     for (var kisei in list) {
         var kiseiList = list[kisei];
+        innerHTML += '<div class="article article_blog"><div class="article_title"><div class="en">'+kisei+'</div></div><div class="list_group">';
         for (var i=0;i<kiseiList.length;i++){
             var detail = kiseiList[i];
             var headImg = getHeadImgUrl(detail.name);
             innerHTML += "<div class=\"list_card\"><a href1=\"memberBlog.html#name=" + detail.name + "\"><div class=\"blog_card\"><div class=\"thumb\">";
             innerHTML += "<div class=\"thumb_img\" style=\"background-image:url(" + headImg + ");\"></div></div>";
             innerHTML += "<div class=\"box\"><div class=\"title\">" + detail.kanji + "</div>";
-            innerHTML += "<div class=\"date\">" + kisei + "</div></div></div></a></div>";
+            innerHTML += "<div class=\"date\">" + detail.name + "</div></div></div></a></div>";
         }
+        innerHTML += '</div></div>';
     }
-    var target = document.querySelector(".list_group");
+    var target = document.querySelector(".content");
     target.innerHTML = innerHTML;
     </script>
 

@@ -1615,10 +1615,11 @@ li.pager_btn.pager_btn_next,li.pager_btn.pager_btn_prev {
     line-height: 18px; }
 
 .article_blog .list_group {
-  display: flex; }
+  display: flex;
+    flex-wrap: wrap; }
 
 .article_blog .list_card {
-  width: calc(33.3333% - 1rem);
+  width: calc(15% + 2rem);
   margin-bottom: 1rem;
   margin-right: 1.6rem; }
   .article_blog .list_card:last-of-type {
