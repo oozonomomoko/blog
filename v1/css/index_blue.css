@@ -2328,7 +2328,7 @@ li.pager_btn.pager_btn_next,li.pager_btn.pager_btn_prev {
 
 .transLine {
     color: #c676cc;
-    font-size: 14pt;
+    font-size: 12pt;
     font-weight: bold;
     line-height: 16pt;
     word-break: break-word;}
@@ -2350,7 +2350,7 @@ li.pager_btn.pager_btn_next,li.pager_btn.pager_btn_prev {
     70%{width:30%;left:70%;}
     100%{width:0%;left:100%;} 
 }
-.main_list {
+/*.main_list {
     animation-duration: 60s;
     animation-name: headimgflow;
     animation-timing-function: linear;
@@ -2360,4 +2360,4 @@ li.pager_btn.pager_btn_next,li.pager_btn.pager_btn_prev {
     0%{background-position-y: 0%;}
     50%{background-position-y: 100%;}
     100%{background-position-y: 0%;}
-}
+}*/

@@ -105,6 +105,7 @@ $(document).ready(function () {
             var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
             var min = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
             var week = date.getDay();
+            detail.date = year+'-'+mon+'-'+day+' '+hour+':'+min;
             
             $(".article_blogkiji .author").text(detail.authorName);
             //$(".ptop a")[0].href = detail.url;
