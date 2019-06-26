@@ -115,7 +115,8 @@ $(document).ready(function () {
             var copy = $.parseHTML(detail.content)[0];
             replaceImgsrc(copy, year, id);
             if (detail.transTitle) {
-                var transEle = $.parseHTML(detail.transContent)[0];
+                let ph = $.parseHTML(detail.transContent);
+                let transEle = ph.length==1?ph[0]:ph[1];
                 replaceImgsrc(transEle, year, id);
                 contactTrans(conEle, transEle);
             }
@@ -152,4 +153,15 @@ $(document).ready(function () {
             }
         }
     });
+});
+$(".btn-hamburger").on('click', function () {
+  if ($(this).hasClass("active")) {
+    $(this).parents().find(".header").removeClass("open");
+    $(this).removeClass("active")
+    $("body").removeClass("hidden");
+  } else {
+    $(this).parents().find(".header").addClass("open");
+    $(this).addClass("active")
+    $("body").addClass("hidden");
+  }
 });
