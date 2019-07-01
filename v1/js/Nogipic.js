@@ -269,13 +269,13 @@ window.Nogipic = (function () {
                         that.imgEle.style[TRANSFORM] = 'scale(1)';
                     }
                 } else {
-                    if (Math.abs(that.pageX-that.startX)>100){
+                    /*if (Math.abs(that.pageX-that.startX)>100){
                         if (that.pageX > that.startX) {
                             that.showImg(that.idx==0?that.eles.length-1:that.idx-1);
                         } else if (that.pageX < that.startX) {
                             that.showImg(that.idx==that.eles.length-1?0:that.idx+1);
                         }
-                    }
+                    }*/
                     // 调整位置
                     that.adjustPos();
                 }
