@@ -92,7 +92,7 @@
             $.ajax({
                 type: "GET",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                url: "/blog/day/" + id,
+                url: "../day/" + id,
                 dataType: "json",
                 success: function (list) {
                     if (renderTime - lastRenderTime > 0) {
@@ -185,8 +185,12 @@
                 'needRoot': true,
                 'change':function(date){
                     console.log(date);
-                    window.location.href = '#' + date;
-                    showList(date);
+                    if(date<'2019-08-09') {
+                        window.location.href = '#' + date;
+                        showList(date);
+                    } else {
+                        window.location.href = '/blogbak/v1/blogList.html#' + date;}
+                    }
                 }
             });
             window.onpopstate = function(){
