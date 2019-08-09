@@ -94,7 +94,7 @@ $(document).ready(function () {
     $.ajax({
         type: "GET",
         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-        url: "/blog/data/" + id,
+        url: "../data/" + id,
         dataType: "json",
         success: function (detail) {
             var date = new Date(detail.date);
